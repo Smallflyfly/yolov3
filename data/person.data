@@ -1,0 +1,6 @@
+classes=1
+train=./trainPerson.txt
+valid=./validPerson.txt
+names=data/person.names
+backup=backup/
+eval=coco
