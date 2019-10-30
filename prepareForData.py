@@ -2,8 +2,8 @@ import os
 import shutil
 import cv2
 
-# datasetROOT = '/media/smallflyfly/Data/Dataset/train/Person/'
-datasetROOT = '/Users/smallflyfly/Desktop/Dataset/train/Person/'
+datasetROOT = '/media/smallflyfly/Data/Dataset/train/Person/'
+# datasetROOT = '/Users/smallflyfly/Desktop/Dataset/train/Person/'
 personTXT = './data/person_img.txt'
 newDatasetpath = './Dataset/'
 if not os.path.exists(newDatasetpath + 'images/'):
