@@ -19,7 +19,7 @@
 !cfg/yolov3*.cfg
 
 runs/*
-data/*
+Dataset/*
 !data/samples/zidane.jpg
 !data/samples/bus.jpg
 !data/coco.names
