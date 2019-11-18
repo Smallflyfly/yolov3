@@ -54,7 +54,7 @@ class LoadImages:  # for inference
         print(videos)
         nI, nV = len(images), len(videos)
         print(nI, nV)
-        fang[-1]
+        # fang[-1]
 
         self.img_size = img_size
         self.files = images + videos
@@ -116,6 +116,8 @@ class LoadImages:  # for inference
         self.frame = 0
         self.cap = cv2.VideoCapture(path)
         self.nframes = int(self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
+        print(self.nframes)
+        fang[-1]
 
     def __len__(self):
         return self.nF  # number of files
