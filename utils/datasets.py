@@ -114,6 +114,7 @@ class LoadImages:  # for inference
 
     def new_video(self, path):
         self.frame = 0
+        print(path)
         self.cap = cv2.VideoCapture(path)
         print(self.cap)
         self.nframes = int(self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
