@@ -2,9 +2,9 @@ import os
 import shutil
 import cv2
 
-datasetROOT = '/media/smallflyfly/Data/Dataset/train/Person/'
+datasetROOT = '/media/smallflyfly/Data/yolov3/Dataset/images/'
 # datasetROOT = '/Users/smallflyfly/Desktop/Dataset/train/Person/'
-personTXT = './data/person_img.txt'
+personTXT = './data/trainperson.txt'
 newDatasetpath = './Dataset/'
 if not os.path.exists(newDatasetpath + 'images/'):
     os.mkdir(newDatasetpath + 'images/')
@@ -12,13 +12,13 @@ if not os.path.exists(newDatasetpath + 'images/'):
 if not os.path.exists(newDatasetpath + 'labels/'):
     os.mkdir(newDatasetpath + 'labels/')
 
-imgFils = os.listdir(datasetROOT + 'Images/')
+imgFils = os.listdir(datasetROOT)
 
 print(len(imgFils))
 
 iftxt = open(personTXT, 'wt')
 for imgfile in imgFils:
-    allfilename = datasetROOT + 'Images/' + imgfile
+    allfilename = datasetROOT + imgfile
     filename = imgfile[:-4]
     iftxt.write(allfilename + '\n')
     # shutil.copy(allfilename, newDatasetpath+'images/')

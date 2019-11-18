@@ -18,6 +18,10 @@
 *.cfg
 !cfg/yolov3*.cfg
 
+output/*
+weights/*
+checkpoints/*
+
 runs/*
 Dataset/*
 !data/samples/zidane.jpg
