@@ -51,7 +51,10 @@ class LoadImages:  # for inference
 
         images = [x for x in files if os.path.splitext(x)[-1].lower() in img_formats]
         videos = [x for x in files if os.path.splitext(x)[-1].lower() in vid_formats]
+        print(videos)
         nI, nV = len(images), len(videos)
+        print(nI, nV)
+        fang[-1]
 
         self.img_size = img_size
         self.files = images + videos
