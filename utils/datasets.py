@@ -119,7 +119,7 @@ class LoadImages:  # for inference
         print(self.cap)
         self.nframes = int(self.cap.get(cv2.CAP_PROP_FRAME_COUNT))
         print(self.nframes)
-        fang[-1]
+        # fang[-1]
 
     def __len__(self):
         return self.nF  # number of files
