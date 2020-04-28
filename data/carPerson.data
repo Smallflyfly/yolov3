@@ -1,6 +1,6 @@
 classes=2
-train=./data/carPersonTrain.txt
-valid=./data/carPersonValid.txt
+train=./data/trainCarPerson.txt
+valid=./data/validCarPerson.txt
 names=data/carPerson.names
 backup=backup/
 eval=coco

@@ -4,32 +4,7 @@ from sys import platform
 from models import *  # set ONNX_EXPORT in models.py
 from utils.datasets import *
 from utils.utils import *
-from testPerson import detectPerson
 
-def view_result(img, xyxy):
-    # print(xyxy[1])
-    # print(img)
-    xy, dxdy = (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3]))
-    # print(x,y,dx,dy)
-    # print(xy, dxdy)
-    img = cv2.rectangle(img, xy, dxdy, (0,255,0), 1)
-    cv2.imshow('img', img)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
-
-def cutImg(img, xyxy):
-    xmin, ymin, xmax, ymax = int(xyxy[0]), int(xyxy[1]), int(xyxy[2]), int(xyxy[3])
-    img = img[:,:,::-1]
-    # print(img.shape)
-    # print(xmin, ymin, xmax, ymax)
-    newImg = img[ymin:ymax,xmin:xmax,:]
-    newImg = newImg[:,:,::-1]
-    # print('-------------------')
-    # print(newImg.shape)
-    # cv2.imshow('newImg', newImg)
-    # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
-    return newImg
 
 def detect(save_txt=False, save_img=False):
     img_size = (320, 192) if ONNX_EXPORT else opt.img_size  # (320, 192) or (416, 256) or (608, 352) for (height, width)
@@ -137,19 +112,6 @@ def detect(save_txt=False, save_img=False):
 
                 # Write results
                 for *xyxy, conf, _, cls in det:
-
-                    # rx, ry, rw, rh = xyxy
-                    # print(rx, ry, rw, rh)
-
-                    # view_result(im0, xyxy)
-                    # print(im0.shape)
-                    if cls == 0:
-                        imgNew = cutImg(im0, xyxy)
-                        detectPerson(imgNew)
-
-
-
-
                     if save_txt:  # Write to file
                         with open(save_path + '.txt', 'a') as file:
                             file.write(('%g ' * 6 + '\n') % (*xyxy, cls, conf))
@@ -206,4 +168,4 @@ if __name__ == '__main__':
     print(opt)
 
     with torch.no_grad():
-        detect(True)
+        detect()
