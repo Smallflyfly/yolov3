@@ -766,6 +766,7 @@ def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=20):
         img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
     # 创建一个可以在给定图像上绘图的对象
     draw = ImageDraw.Draw(img)
+    print(left, top, text, textColor, textSize)
     # 字体的格式
     fontStyle = ImageFont.truetype(
         "font/simsun.ttc", textSize, encoding="utf-8")
