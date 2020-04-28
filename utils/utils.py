@@ -761,7 +761,7 @@ def fitness(x):
 
 
 def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=20):
-    if (isinstance(img, numpy.ndarray)):  # 判断是否OpenCV图片类型
+    if (isinstance(img, np.ndarray)):  # 判断是否OpenCV图片类型
         img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
     # 创建一个可以在给定图像上绘图的对象
     draw = ImageDraw.Draw(img)
@@ -771,7 +771,7 @@ def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=20):
     # 绘制文本
     draw.text((left, top), text, textColor, font=fontStyle)
     # 转换回OpenCV格式
-    return cv2.cvtColor(numpy.asarray(img), cv2.COLOR_RGB2BGR)
+    return cv2.cvtColor(np.asarray(img), cv2.COLOR_RGB2BGR)
 
 # Plotting functions ---------------------------------------------------------------------------------------------------
 def plot_one_box(x, img, color=None, label=None, line_thickness=None):
