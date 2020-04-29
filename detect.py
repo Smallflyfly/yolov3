@@ -88,6 +88,7 @@ def detect(save_txt=False, save_img=False):
 
     # Get classes and colors
     classes = load_classes(parse_data_cfg(opt.data)['names'])
+    classes_names = ['行人', '车辆']
     # print(classes)
     colors = [[random.randint(0, 255) for _ in range(3)] for _ in range(len(classes))]
 
@@ -155,7 +156,10 @@ def detect(save_txt=False, save_img=False):
                             file.write(('%g ' * 6 + '\n') % (*xyxy, cls, conf))
 
                     if save_img or view_img:  # Add bbox to image
-                        label = '%s %.2f' % (classes[int(cls)], conf)
+                        # label = '%s %.2f' % (classes[int(cls)], conf)
+                        
+                        label = '%s' % (classes[int(cls)], conf)
+
                         plot_one_box(xyxy, im0, label=label, color=colors[int(cls)])
 
             print('%sDone. (%.3fs)' % (s, time.time() - t))
