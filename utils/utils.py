@@ -761,7 +761,7 @@ def fitness(x):
     return x[:, 2] * 0.8 + x[:, 3] * 0.2  # weighted mAP and F1 combination
 
 
-def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=20):
+def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=2):
     if (isinstance(img, np.ndarray)):  # 判断是否OpenCV图片类型
         img = Image.fromarray(cv2.cvtColor(img, cv2.COLOR_BGR2RGB))
     # 创建一个可以在给定图像上绘图的对象
@@ -771,9 +771,12 @@ def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=20):
     fontStyle = ImageFont.truetype(
         "font/simsun.ttc", textSize, encoding="utf-8")
     # 绘制文本
-    draw.text((left, top), text, textColor, font=fontStyle)
+    draw.text((50, 50), text, textColor, font=fontStyle)
     # 转换回OpenCV格式
-    return cv2.cvtColor(np.asarray(img), cv2.COLOR_RGB2BGR)
+    cv2.cvtColor(np.asarray(img).astype(int), cv2.COLOR_RGB2BGR)
+    cv2.imshow('img', img)
+    cv2.waitKey()
+    cv2.destroyAllWindows()
 
 # Plotting functions ---------------------------------------------------------------------------------------------------
 def plot_one_box(x, img, color=None, label=None, line_thickness=None):
@@ -788,7 +791,7 @@ def plot_one_box(x, img, color=None, label=None, line_thickness=None):
         # c2 = c1[0] + t_size[0], c1[1] - t_size[1] - 3
         # cv2.rectangle(img, c1, c2, color, -1)  # filled
         # cv2.putText(img, label, (c1[0], c1[1] - 2), 0, tl / 3, [225, 255, 255], thickness=tf, lineType=cv2.LINE_AA)
-        img = cv2ImgAddText(img, label, c1[0], c1[1] - 2)
+        cv2ImgAddText(img, label, c1[0], c1[1] - 2)
 
 def plot_wh_methods():  # from utils.utils import *; plot_wh_methods()
     # Compares the two methods for width-height anchor multiplication
