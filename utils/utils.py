@@ -771,9 +771,9 @@ def cv2ImgAddText(img, text, left, top, textColor=(0, 255, 0), textSize=2):
     fontStyle = ImageFont.truetype(
         "font/simsun.ttc", textSize, encoding="utf-8")
     # 绘制文本
-    draw.text((50, 50), text, textColor, font=fontStyle)
+    draw.text((100, 100), text, textColor, font=fontStyle)
     # 转换回OpenCV格式
-    cv2.cvtColor(np.asarray(img).astype(int), cv2.COLOR_RGB2BGR)
+    img = cv2.cvtColor(np.asarray(img), cv2.COLOR_RGB2BGR)
     cv2.imshow('img', img)
     cv2.waitKey()
     cv2.destroyAllWindows()
